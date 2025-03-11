@@ -1,12 +1,12 @@
 pipeline {
-    agent any
+    agent any  // Runs on any available agent
 
     stages {
         stage('Build') {
             steps {
                 script {
-                    echo "Building the application..."
-                    sh "make -C Downloads/CC_TA-main/main/main.cpp clean && make -C Downloads/CC_TA-main/main/main.cpp hello_exec"
+                    echo 'Building C++ Project...'
+                    sh 'g++ -o output main.cpp' // Compiling C++ file
                 }
             }
         }
@@ -14,8 +14,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo "Running tests..."
-                    sh "./main/hello_exec"
+                    echo 'Running Tests...'
+                    sh './output'  // Execute compiled binary
                 }
             }
         }
@@ -23,8 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    echo "Deploying application..."
-                    sh 'echo "Deployment successful!"'
+                    echo 'Deploying...'
+                    echo 'Deployment Successful ✅'
                 }
             }
         }
@@ -32,10 +32,7 @@ pipeline {
 
     post {
         failure {
-            echo "Pipeline failed"
-        }
-        success {
-            echo "Pipeline completed successfully!"
+            echo '🚨 Pipeline Failed! Check logs for errors.'
         }
     }
 }
