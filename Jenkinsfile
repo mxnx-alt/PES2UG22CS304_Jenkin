@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building C++ Project...'
-                    sh 'g++ -o output main.cpp' // Compiling C++ file
+                    sh 'g++ -o output Downloads/CC_TA-main/main.cpp' // Compiling C++ file
                 }
             }
         }
