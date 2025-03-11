@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo "Building the application..."
-                    sh "make -C Downloads/CC_TA-main/main clean && make -C Downloads/CC_TA-main/main hello_exec"
+                    sh "make -C Downloads/CC_TA-main/main/main.cpp clean && make -C Downloads/CC_TA-main/main/main.cpp hello_exec"
                 }
             }
         }
